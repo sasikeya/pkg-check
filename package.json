@@ -7,11 +7,16 @@
   },
   "author": "chenziheng",
   "license": "ISC",
-  "version": "0.0.7",
-  "keywords": ["pkg-check"],
+  "version": "0.0.9",
+  "keywords": [
+    "pkg-check"
+  ],
   "dependencies": {
     "alphabetjs": "^0.1.4",
+    "axios": "^0.21.1",
     "chalk": "^4.0.0",
-    "ora": "^5.3.0"
+    "commander": "^7.0.0",
+    "ora": "^5.3.0",
+    "package-json": "^6.5.0"
   }
 }
