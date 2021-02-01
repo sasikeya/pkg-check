@@ -2,7 +2,7 @@
 function resolveConfig(config) {
   if (!config) { 
     config = {
-      mode: 'strict',
+      slectAll: true,
       dependencies: [],
       packagePath: ''
     }
