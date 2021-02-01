@@ -14,7 +14,7 @@ function start(config) {
   if (isntallDependencies.length) {
     install(isntallDependencies);
   } else {
-    console.log(chalk.green('很好，没得问题'))
+    console.log(chalk.green('依赖暂不需要更新'))
   }
 }
 start()
