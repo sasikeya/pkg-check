@@ -18,15 +18,16 @@ npm install pkg-check -D
 const pkgCheck = require('pkg-check')
 
 const config = {
-  slectAll?: true,  ===> 默认值所有依赖性, 可选
-  dependencies: [opt], string or Object 指定监控的包
-  packagePath: '' package.json 相对与根目录路径
+  slectAll?: true,  默认所有依赖, 可选
+  dependencies?: [opt], string or Object 指定监控的包
+  packagePath?: '' package.json 相对与根目录路径
 }
 
-env 通过命令行获取参数对应自定义环境的版本
+xxx 通过命令行获取参数对应自定义环境的版本
 opt = {
   name: 'xx',   依赖名称
-  [env]: '1.0.0',
+  ['xxx']: '1.0.0',
+  env: 'test' 环境
   origin: 'npm', 依赖来源
   autoUpdate: true  true代表每次检查都会检查最新版本 如果有新版就安装最新版本
 }
