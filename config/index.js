@@ -3,7 +3,6 @@
 function resolveConfig(config, env) {
   if (!config) { 
     config = {
-      slectAll: true,
       dependencies: [],
       packagePath: ''
     }

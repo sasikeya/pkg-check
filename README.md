@@ -17,8 +17,11 @@ npm install pkg-check -D
 ```
 const pkgCheck = require('pkg-check')
 
+
+API  start 方法
+
+start 会自动安装依赖
 const config = {
-  slectAll?: true,  默认所有依赖, 可选
   dependencies?: [opt], string or Object 指定监控的包
   packagePath?: '' package.json 相对与根目录路径
 }
@@ -35,9 +38,15 @@ opt = {
 pkgCheck.start(config) 
 
 
-API 提供了start 和 check 方法
-start 会自动安装依赖
+API check 方法
 check 只是检查版本
+
+pkgCheck.check(config) 
+
+const config = {
+  dependencies: [''], 字符串类型 string 指定监控的包 
+  packagePath?: '' package.json 相对与根目录路径
+}
 
 check 类型Promise 返回的需要安装依赖的信息 
 [{dependencies:xxx, version: xxx}]

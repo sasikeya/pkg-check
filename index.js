@@ -1,4 +1,4 @@
-const { collectionDependencies } = require('./lib/collection-dependencies');
+const { collectionDependencies, checkCollectionDependencies } = require('./lib/collection-dependencies');
 const { compare } = require('./lib/compare-dependencies');
 const { install } = require('./lib/install-package');
 const { resolveConfig } = require('./config/index');
@@ -27,9 +27,8 @@ async function check (config) {
   const str = Alphabet('JD FE tibao','planar')
   log(chalk.green(str))
 
-  const env = program.parse(process.argv).args[0]
-  const changeConfig = resolveConfig(config, env)
-  const dependencies = await collectionDependencies(changeConfig);
+  const changeConfig = resolveConfig(config)
+  const dependencies = checkCollectionDependencies(changeConfig);
   const isntallDependencies = compare(dependencies);
   if (isntallDependencies.length) {
     log('当前依赖版本不一致 ' + chalk.red(isntallDependencies.map(i => `${i.dependencies}@${i.version}`).join(' ')))
