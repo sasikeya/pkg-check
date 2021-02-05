@@ -32,7 +32,15 @@ opt = {
   autoUpdate: true  true代表每次检查都会检查最新版本 如果有新版就安装最新版本
 }
 
-pkgCheck.start(config)
+pkgCheck.start(config) 
+
+
+API 提供了start 和 check 方法
+start 会自动安装依赖
+check 只是检查版本
+
+check 类型Promise 返回的需要安装依赖的信息 
+[{dependencies:xxx, version: xxx}]
 
 ```
 
