@@ -38,5 +38,6 @@ async function check (config) {
 
 module.exports = {
   start,
+  install: start,
   check
 };
