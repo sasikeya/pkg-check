@@ -1,7 +1,7 @@
-const fs = require('fs')
+import fs from 'fs'
 
-function getJSON (path) {
-  let file = ''
+function getJSON (path: string): object {
+  let file = {}
   try {
     file = JSON.parse(fs.readFileSync(path, 'utf-8'))
   } catch (error) {
@@ -11,6 +11,6 @@ function getJSON (path) {
 
 }
 
-module.exports = {
+export {
   getJSON
 }

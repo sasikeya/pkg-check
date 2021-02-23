@@ -1,10 +1,13 @@
-const {getJnpmVerison, getNpmVersion} = require('./find-version')
+import {getJnpmVerison, getNpmVersion} from './find-version'
+import { pkg } from '../interface/pkg'
+import { dependencies } from '../interface/config'
 
-async function changePkg(dependencies, pkgList, env) {
+async function changePkg(dependencies: [string, dependencies], pkgList: pkg[], env):Promise<pkg[]> {
   const installPackage = []
   if (dependencies && dependencies.length) {
     for (let index = 0; index < dependencies.length; index++) {
       const item = dependencies[index];
+      // 如果是字符串类型
       if (typeof item === 'string') {
         pkgList.forEach(pkg => {
           if (item === pkg.dependencies) {
@@ -23,7 +26,7 @@ async function changePkg(dependencies, pkgList, env) {
   return installPackage
 }
 
-async function getObjectDependencies(item, env) {
+async function getObjectDependencies(item: dependencies, env): Promise<pkg> {
   if (Object.prototype.toString.call(item) === '[object Object]') {
     if (item.autoUpdate && !env) {
       if (item.origin === 'jd') {
@@ -48,6 +51,6 @@ async function getObjectDependencies(item, env) {
   }
 }
 
-module.exports = {
+export {
   changePkg
 }

@@ -10,7 +10,7 @@
 npm install pkg-check -D
 ```
 ### 环境
-* Node >= 10
+* Node >= 8
 
 
 # 使用配置

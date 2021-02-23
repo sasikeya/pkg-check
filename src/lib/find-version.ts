@@ -1,12 +1,11 @@
-const axios = require('axios');
-const packageJson = require('package-json');
-const ora = require('ora');
+import axios from 'axios'
+import packageJson from 'package-json'
+import ora from 'ora'
 const loadingText = '正在查询版本中'
-
 
 // 依赖jnpm 页面 如果页面调整 此方法失效
 
-async function getJnpmVerison(name) {
+async function getJnpmVerison(name: string): Promise<string> {
   const spinner = ora(loadingText).start();
   let version = '0'
   try {
@@ -20,11 +19,11 @@ async function getJnpmVerison(name) {
   return version
 }
 
-async function getNpmVersion(name) {
+async function getNpmVersion(name: string): Promise<string> {
   const spinner = ora(loadingText).start();
   let version = ''
   try {
-    const data = await packageJson(name)
+    const data: any = await packageJson(name)
     version = data.version
     spinner.stop()
   } catch (error) {
@@ -34,7 +33,7 @@ async function getNpmVersion(name) {
   return version
 }
 
-module.exports = {
+export {
   getJnpmVerison,
   getNpmVersion
 }

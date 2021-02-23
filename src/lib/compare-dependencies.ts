@@ -1,14 +1,16 @@
-const path = require('path');
-const process = require('process');
-const chalk = require('chalk');
-const { getJSON } = require('./read-file');
+import path from 'path';
+import process from 'process'
+import chalk from 'chalk'
+import { getJSON }  from './read-file'
+import { pkg } from '../interface/pkg';
+
 const nodeModules = path.resolve('') + '/node_modules';
 
-function compare(dependencies) {
+function compare(dependencies: pkg[]): pkg[] {
   const needInstall = [];
   dependencies.forEach((item) => {
     try {
-      const nodeModule = getJSON(
+      const nodeModule: any = getJSON(
         `${nodeModules}/${item.dependencies}/package.json`
       );
       if (
@@ -30,6 +32,6 @@ function compare(dependencies) {
   return needInstall;
 }
 
-module.exports = {
+export {
   compare,
 };

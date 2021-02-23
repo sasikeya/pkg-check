@@ -1,13 +1,11 @@
 const exec = require('child_process').exec;
-const chalk = require('chalk');
-const ora = require('ora');
+import chalk from 'chalk'
+import ora from 'ora'
 
 const log = console.log;
 
-
-module.exports = {
-  install: (packageList) => {
-    let cmdStr = 'npm install';
+function install (packageList) {
+  let cmdStr = 'npm install';
     packageList.forEach(item => {
       cmdStr += ` ${item.dependencies}@${item.version} `
     })
@@ -21,5 +19,8 @@ module.exports = {
         log(chalk.green('依赖更新完成'));
       }
     });
-  },
+}
+
+export {
+  install
 };
