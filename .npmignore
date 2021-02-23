@@ -2,7 +2,10 @@
 logs
 *.log
 npm-debug.log*
+
+# source
 src
+rollup.config
 
 # Dependency directories
 node_modules
