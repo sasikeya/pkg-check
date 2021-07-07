@@ -147,7 +147,7 @@ function changePkg(dependencies, pkgList, env) {
             switch (_a.label) {
                 case 0:
                     installPackage = [];
-                    if (!(dependencies && dependencies.length)) return [3 /*break*/, 4];
+                    if (!(dependencies && dependencies.length)) return [3 /*break*/, 5];
                     _loop_1 = function (index) {
                         var item, _a, _b;
                         return __generator(this, function (_c) {
@@ -186,7 +186,11 @@ function changePkg(dependencies, pkgList, env) {
                 case 3:
                     index++;
                     return [3 /*break*/, 1];
-                case 4: return [2 /*return*/, installPackage];
+                case 4: return [3 /*break*/, 6];
+                case 5:
+                    installPackage.push.apply(installPackage, pkgList);
+                    _a.label = 6;
+                case 6: return [2 /*return*/, installPackage];
             }
         });
     });
@@ -289,6 +293,9 @@ function checkPkgVersion(config, pkgList) {
             _loop_1(index);
         }
     }
+    else {
+        packagejson.push.apply(packagejson, pkgList);
+    }
     return packagejson;
 }
 
@@ -337,6 +344,9 @@ function install(packageList) {
 function resolveConfig(config, env) {
     if (env) {
         return Object.assign(config, { env: env });
+    }
+    if (!config) {
+        return Object.assign({ dependencies: [] });
     }
     return config;
 }

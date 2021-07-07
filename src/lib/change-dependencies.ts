@@ -22,6 +22,8 @@ async function changePkg(dependencies: [string, dependencies], pkgList: pkg[], e
         }
       } 
     } 
+  } else {
+    installPackage.push(...pkgList)
   }
   return installPackage
 }

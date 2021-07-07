@@ -21,7 +21,7 @@ const pkgCheck = require('pkg-check')
 API  start 方法
 
 start 会自动安装依赖
-const config = {
+const config? = {
   dependencies?: [opt], string or Object 指定监控的包
   packagePath?: '' package.json 相对与根目录路径
 }

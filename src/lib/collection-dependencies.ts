@@ -54,6 +54,9 @@ function checkPkgVersion(config: config, pkgList: pkg[]): pkg[] {
       });
     }
   }
+  else {
+    packagejson.push(...pkgList)
+  }
   return packagejson;
 }
 
