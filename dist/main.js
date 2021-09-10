@@ -324,20 +324,23 @@ function compare(dependencies) {
 var exec = require('child_process').exec;
 var log = console.log;
 function install(packageList) {
-    var cmdStr = 'npm install';
-    packageList.forEach(function (item) {
-        cmdStr += " " + item.dependencies + "@" + item.version + " ";
-    });
-    log(chalk__default['default'].cyan(cmdStr));
-    var spinner = ora__default['default']('为了保证组件版本统一，开始安装package版本号的依赖').start();
-    exec(cmdStr, function (err) {
-        spinner.stop();
-        if (err) {
-            throw new Error(err);
-        }
-        else {
-            log(chalk__default['default'].green('依赖更新完成'));
-        }
+    return new Promise(function (s) {
+        var cmdStr = 'npm install';
+        packageList.forEach(function (item) {
+            cmdStr += " " + item.dependencies + "@" + item.version + " ";
+        });
+        log(chalk__default['default'].cyan(cmdStr));
+        var spinner = ora__default['default']('为了保证组件版本统一，开始安装package版本号的依赖').start();
+        exec(cmdStr, function (err) {
+            spinner.stop();
+            if (err) {
+                throw new Error(err);
+            }
+            else {
+                log(chalk__default['default'].green('依赖更新完成'));
+                s(true);
+            }
+        });
     });
 }
 
@@ -367,7 +370,7 @@ function start(config) {
                     dependencies = _a.sent();
                     isntallDependencies = compare(dependencies);
                     if (isntallDependencies.length) {
-                        install(isntallDependencies);
+                        return [2 /*return*/, install(isntallDependencies)];
                     }
                     else {
                         log$1(chalk__default['default'].green('依赖暂不需要更新'));

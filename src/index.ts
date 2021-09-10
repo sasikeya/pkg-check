@@ -24,7 +24,7 @@ async function start(config: config) {
   const isntallDependencies = compare(dependencies);
 
   if (isntallDependencies.length) {
-    install(isntallDependencies);
+    return install(isntallDependencies);
   } else {
     log(chalk.green('依赖暂不需要更新'));
   }
